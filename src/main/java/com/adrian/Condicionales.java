@@ -55,4 +55,24 @@ public class Condicionales {
     public int longitudDeText(String cadena) {
         return cadena.length();
     }
+
+    //Elimina los espacios en blanco al principio y
+    //final de un string.
+    public String cadenaFormateada(String cadena) {
+        var valor = cadena.trim();
+        // System.out.println(cadena == valor);
+        return valor;
+    }
+
+    //Dado 3 números verifica cual es el mayor usando if - else
+    public int mayor(int a, int b, int c) {
+        if(a > b && a > c) {
+            return a;
+        } else if(b > a && b > c) {
+            return b;
+        } else {
+            return c;
+        }
+    }
+
 }
