@@ -33,7 +33,7 @@ public class Ahorcado {
         intentos = 0;
     }
 
-    public void iniciar(Scanner scan) {
+    public void iniciar() {
         var r = new Random();
         palabraSecreta = palabras[r.nextInt(palabras.length)]; //Interfaz
         var flag = "_ ";
@@ -46,7 +46,40 @@ public class Ahorcado {
         // ejecutar();
     }
 
-    public void ejecutar() {
+    public void ejecutar(Scanner scan) {
+        
+        while (true) {
+            System.out.println(mensaje());
+            var letra = scan.next();
+            var temporal = "";
+            if(palabraSecreta.contains(letra)) {
+                // a
+                // _ _ _ _ _ _ _ _
+                temporal = palabraTablero;
+                var letras = palabraTablero.replace(" ", "").toCharArray();
+                for(int i = 0; i < palabraSecreta.length(); i++) {
+                    if(String.valueOf(palabraSecreta.charAt(i)).equals(letra)) {
+                        // _ _ _ _ _ _ _ _
+                        // 0 1 2 3 4 5 6 7
+                        // Cambio _ > a
+                        letras[i] = letra.charAt(0); // _ a _ _ _ a _ a 
+
+                    }
+                }
+                //Asignar
+                for (char c : letras) {
+                    temporal += String.valueOf(c) + " ";
+                }
+                palabraTablero = temporal;
+                
+            } else {
+                System.out.println("Ahhh, Erroooor");
+                System.out.println("Ta' maaaaaaaal");
+            }
+        }
+    }
+
+    public String mensaje() {
         StringBuilder strBuild = new StringBuilder();
         strBuild.append("**** AHORCADO ****\n");
         strBuild.append("\tIntentos restanates: ");
@@ -55,9 +88,6 @@ public class Ahorcado {
         strBuild.append(errores);
         strBuild.append("\n");
         strBuild.append(palabraTablero);
-        while (true) {
-            System.out.println(strBuild.toString());
-            break;
-        }
+        return strBuild.toString();
     }
 }

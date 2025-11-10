@@ -30,8 +30,8 @@ public class Main {
                     biblioteka.guardar(scan);
                     break;
                 case 3:
-                    ahoracado.iniciar(scan);
-                    ahoracado.ejecutar();
+                    ahoracado.iniciar();
+                    ahoracado.ejecutar(scan);
                     break;
                 case 0:
                     // Salir
