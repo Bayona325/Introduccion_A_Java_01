@@ -5,18 +5,21 @@ package com.adrian;
 import java.util.Scanner;
 
 import com.adrian.ejercicios.Bibliotek;
+import com.adrian.game.ahoracado.Ahorcado;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
         var biblioteka = new Bibliotek();
+        var ahoracado = new Ahorcado();
         while (flag) {
             System.out.println("""
                     ++++++++++++++  MENU  ++++++++++++++
                             ** Ingrese la opcion deseada **
                     1. Listar libros Bibliotek
                     2. Guardar libros Bibliotek
+                    3. Jugar al Ahorcado
                     0. Salir
                     """);
             switch (scan.nextInt()) {
@@ -25,6 +28,10 @@ public class Main {
                     break;
                 case 2:
                     biblioteka.guardar(scan);
+                    break;
+                case 3:
+                    ahoracado.iniciar(scan);
+                    ahoracado.ejecutar();
                     break;
                 case 0:
                     // Salir
