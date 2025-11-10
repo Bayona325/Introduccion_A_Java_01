@@ -17,27 +17,29 @@ public class Bibliotek {
         }
     }
 
-    public void guardar() {
+    public void guardar(Scanner scanner) {
         if(indice >= 10) {
-            System.out.println("No hay más espacio en la bibliotek.....");
+            System.out.println("No hay mas espacio en la Bibliotek.....");
             return;
         }
-        
-        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine(); // Evitar el salto de linea
         Libro libro = new Libro();
         System.out.println("Ingresa el título del libro: ");
-        libro.titulo = scanner.nextLine();
+        libro.titulo = scanner.nextLine(); 
         System.out.println("Ingresa el autor del libro: ");
-        libro.autor = scanner.nextLine();
-        System.out.println("Ingresa el año de publicación: ");
-        libro.anio = scanner.nextInt();
+        libro.autor = scanner.nextLine(); 
+        System.out.println("Ingresa el año de publicación:  ");
+        libro.anio = scanner.nextInt(); 
         scanner.nextLine(); // Evitar el salto de linea
-        System.out.println("Ingresa el género del libro: ");
-        libro.genero = scanner.nextLine();
-        System.out.println("Ingresa el número de páginas: ");
+        System.out.println("Ingresa el género del libro:  ");
+        libro.genero = scanner.nextLine(); 
+        System.out.println("Ingresa el número de páginas:  ");
         libro.numPaginas = scanner.nextInt();
-
-        libros[indice++] = libro;
-        scanner.close();
+        
+        libros[indice++] = libro; //0
+        
+        //libros[indice] = libro;
+        //indice++;
+        //scanner.close();
     }
 }
