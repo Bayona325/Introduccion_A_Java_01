@@ -31,6 +31,18 @@ public class Ahorcado {
         // ejecutar();
     }
 
+    public void iniciar(String caracter) {
+        var r = new Random();
+        palabraSecreta = palabras[r.nextInt(palabras.length - 1)];// interfaz
+        var flag = caracter+" ";
+        palabraTablero = "";
+        for (int a = 0; a < palabraSecreta.length(); a++) {
+            palabraTablero += flag; // _ _ _ _ _ _ _ _
+        }
+        // ejecutar();
+    }
+
+
     public void ejecutar(Scanner scan) {
 
         while (true) {

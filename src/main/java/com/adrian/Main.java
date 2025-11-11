@@ -5,6 +5,7 @@ package com.adrian;
 import java.util.Scanner;
 
 import com.adrian.ejercicios.Bibliotek;
+import com.adrian.ejercicios.Factorial;
 import com.adrian.game.ahoracado.Ahorcado;
 
 public class Main {
@@ -20,6 +21,7 @@ public class Main {
                     1. Listar libros Bibliotek
                     2. Guardar libros Bibliotek
                     3. Jugar al Ahorcado
+                    4. Vueltos
                     0. Salir
                     """);
             switch (scan.nextInt()) {
@@ -32,6 +34,9 @@ public class Main {
                 case 3:
                     ahoracado.iniciar();
                     ahoracado.ejecutar(scan);
+                    break;
+                case 4:
+                    System.out.println(Factorial.vueltos(10550, 50));
                     break;
                 case 0:
                     // Salir
