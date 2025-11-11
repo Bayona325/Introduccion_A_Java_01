@@ -8,7 +8,7 @@ public class Factorial {
         return numero * fact(numero-1);
     }
 
-    public static int vueltos(int monto, int moneda) {
+    public int vueltos(int monto, int moneda) {
         if((monto - moneda) < moneda) {
             return 0;
         }
