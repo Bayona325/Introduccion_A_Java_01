@@ -7,6 +7,7 @@ import java.util.Scanner;
 import com.adrian.ejercicios.Bibliotek;
 import com.adrian.ejercicios.Camper;
 import com.adrian.ejercicios.Factorial;
+import com.adrian.ejercicios.Trainer;
 import com.adrian.game.ahoracado.Ahorcado;
 
 public class Main {
@@ -24,6 +25,8 @@ public class Main {
                     2. Guardar libros Bibliotek
                     3. Jugar al Ahorcado
                     4. Vueltos
+                    5. Camper
+                    6. Trainer
                     0. Salir
                     """);
             switch (scan.nextInt()) {
@@ -45,17 +48,19 @@ public class Main {
                     //Administrativo
                     //Trainer
                     //Colaborador
-                    Camper camper = new Camper();
-                    camper.nombre = "Andres";
+                    Camper camper = new Camper("Andres", "Perea", 16, "TI", "1005123456", "?", "andresitto_777@gmail.com", "018000918080");
+                    System.out.println(camper.telefono);
+                    /*camper.nombre = "Andres";
                     camper.apellido = "Perea";
                     camper.edad = 16;
                     camper.tipoDocumento = "TI";
                     camper.documento = "1005123456";
                     camper.estratoSocial = -1;
                     camper.genero = "?";
-                    camper.email = "andresitto_777@gmail.com";
+                    camper.email = "andresitto_777@gmail.com";*/
                     camper.telefono = "018000918080";
-                    camper.nivelIngles = 10;
+                    System.out.println(camper.telefono);
+                    //camper.nivelIngles = 10;
 
                     camper.dormir();
                     camper.divertirse();
@@ -63,6 +68,27 @@ public class Main {
                     camper.reportar();
                     camper.calificar();
 
+                    break;
+                case 6:
+                    Trainer trainer = new Trainer();
+                    trainer.nombre = "Adrian";
+                    trainer.apellido = "Triener";
+                    /*
+                    trainer.edad = 27;
+                    trainer.tipoDocumento = "CC";
+                    trainer.documento = "1005198456";
+                    trainer.estratoSocial = 4;
+                    trainer.genero = "Hombre";
+                    trainer.email = "adrian_trainer@gmail.com";
+                    trainer.telefono = "0180009";
+                    trainer.nivelIngles = 10;
+                    */
+
+                    trainer.dormir();
+                    trainer.divertirse();
+
+                    trainer.reportar();
+                    trainer.calificar();
                     break;
                 case 0:
                     // Salir
