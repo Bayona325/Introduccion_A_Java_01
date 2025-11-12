@@ -4,34 +4,32 @@ package com.adrian;
 // import java.util.Random;
 import java.util.Scanner;
 
-import com.adrian.ejercicios.bank.BankAccount;
+import com.adrian.ejercicios.User.User;
 
 public class Main {
     final static int maxRange = 10000;
     public static void main(String[] args) {
+        /**
+         * Crea una clase User con los atributos privados username y password.
+         * Implementa los métodos setUsername(String username),
+         * setPassword(String password) y checkPassword(String inputPassword) que compare contraseñas. 
+         */
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
-        var account = new BankAccount();
+        var user = new User();
         while (flag) {
             System.out.println("""
                     ++++++++++++++  MENU  ++++++++++++++
                             ** Ingrese la opcion deseada **
-                    1. Consignar
-                    2. Retirar
-                    3. Ver Saldo
+                    1. Crear usuario
+                    2. Usar usuario
                     0. Salir
                     """);
             switch (scan.nextInt()) {
                 case 1:
-                    System.out.println("Ingrese el monto en numeros enteros a depositar: ");
-                    account.deposit(scan.nextInt());
+                    user.crearUsuario();
                     break;
                 case 2:
-                    System.out.println("Ingrese el monto en numeros enteros a retirar: ");
-                    account.withdraw(scan.nextInt());
-                    break;
-                case 3:
-                    System.out.println("Su Saldo es: $"+account.showBalance());
                     break;
                 case 0:
                     // Salir
