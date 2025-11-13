@@ -5,6 +5,7 @@ package com.adrian;
 import java.util.Scanner;
 
 import com.adrian.ejercicios.User.User;
+import com.adrian.ejercicios.User.Admin;
 
 public class Main {
     final static int maxRange = 10000;
@@ -16,20 +17,59 @@ public class Main {
          */
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
-        var user = new User();
+        User common = new User();
+        Admin admin = new Admin();
+        User user = new Admin();
+
         while (flag) {
             System.out.println("""
                     ++++++++++++++  MENU  ++++++++++++++
                             ** Ingrese la opcion deseada **
-                    1. Crear usuario
-                    2. Usar usuario
+                    1. Ingrese su nombre
+                    2. Ingrese su contraseña
+                    3. Valide su contraseña
+                    4. Agregar permisos (ADMINISTRADORES)
+                    5. Ver permisos (ADMINISTRADORES)
+                    6. Ver info
                     0. Salir
                     """);
             switch (scan.nextInt()) {
+                case 6:
+
+                    break;
+                case 5:
+                    System.out.println(admin.showPermissions());
+                    System.out.println(((Admin)user).showPermissions());
+                    break;
+                case 4:
+                    scan.nextLine();
+                    var permiso = scan.nextLine();
+                    var permisos = new String[]{permiso};
+                    //common.setPermissions();
+                    admin.setPermissions(permisos);
+                    ((Admin)user).setPermissions(permisos);
+                    //((Admin)common).setPermissions(permisos);
+                    break;
                 case 1:
-                    user.crearUsuario();
+                    scan.nextLine();
+                    var tempName = scan.nextLine();
+                    common.setUsername(tempName);
+                    admin.setUsername(tempName);
+                    user.setUsername(tempName);
                     break;
                 case 2:
+                    scan.nextLine();
+                    var tempPassword = scan.nextLine();
+                    common.setPassword(tempPassword);
+                    admin.setPassword(tempPassword);
+                    user.setPassword(tempPassword);
+                    break;
+                case 3:
+                    scan.nextLine();
+                    var tempCheckPassword = scan.nextLine();
+                    System.out.println("User: "+common.checkPassword(tempCheckPassword));
+                    System.out.println("Admin: "+admin.checkPassword(tempCheckPassword));
+                    System.out.println("Admin: "+user.checkPassword(tempCheckPassword));
                     break;
                 case 0:
                     // Salir
