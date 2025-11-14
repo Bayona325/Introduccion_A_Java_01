@@ -1,11 +1,14 @@
 package com.adrian;
 
+import java.util.ArrayList;
 // import java.util.Objects;
 // import java.util.Random;
 import java.util.Scanner;
 
 import com.adrian.ejercicios.User.User;
 import com.adrian.ejercicios.User.Admin;
+import com.adrian.ejercicios.User.Cliente;
+import java.util.*;
 
 public class Main {
     final static int maxRange = 10000;
@@ -17,14 +20,17 @@ public class Main {
          */
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
-        User common = new User();
+        User[] otraforma = new User[100];
+        List<User> usuarios = new ArrayList<>();
+
+        User common = new Cliente();
         Admin admin = new Admin();
         User user = new Admin();
 
         while (flag) {
             System.out.println("""
                     ++++++++++++++  MENU  ++++++++++++++
-                            ** Ingrese la opcion deseada **
+                      ** Ingrese la opcion deseada **
                     1. Ingrese su nombre
                     2. Ingrese su contraseña
                     3. Valide su contraseña
@@ -35,7 +41,8 @@ public class Main {
                     """);
             switch (scan.nextInt()) {
                 case 6:
-
+                    System.out.println(common.showInfo());
+                    System.out.println(admin.showInfo());
                     break;
                 case 5:
                     System.out.println(admin.showPermissions());
@@ -44,12 +51,12 @@ public class Main {
                 case 4:
                     scan.nextLine();
                     var permiso = scan.nextLine();
-                    var permisos = new String[]{permiso};
+                    var permisos = new String[]{"x","y","z"};
                     //common.setPermissions();
-                    admin.setPermissions(permisos);
+                    admin.setPermissions(permiso);
                     ((Admin)user).setPermissions(permisos);
-                    //((Admin)common).setPermissions(permisos);
-                    break;
+                    //((Admin)common).setPermissions(permisos); X
+                    break; 
                 case 1:
                     scan.nextLine();
                     var tempName = scan.nextLine();
