@@ -1,13 +1,11 @@
 package com.adrian;
 
-import java.util.ArrayList;
-// import java.util.Objects;
-// import java.util.Random;
-import java.util.Scanner;
-
 import com.adrian.ejercicios.User.User;
 import com.adrian.ejercicios.User.Admin;
 import com.adrian.ejercicios.User.Cliente;
+
+// import java.util.Objects;
+// import java.util.Random;
 import java.util.*;
 
 public class Main {
@@ -20,12 +18,16 @@ public class Main {
          */
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
-        User[] otraforma = new User[100];
+        // User[] otraforma = new User[100];
         List<User> usuarios = new ArrayList<>();
 
-        User common = new Cliente();
-        Admin admin = new Admin();
-        User user = new Admin();
+        usuarios.add(new Cliente());
+        usuarios.add(new Admin());
+        usuarios.add(new Admin());
+
+        // User common = new Cliente(); // 0
+        // Admin admin = new Admin(); // 1
+        // User user = new Admin(); // 2
 
         while (flag) {
             System.out.println("""
@@ -41,42 +43,46 @@ public class Main {
                     """);
             switch (scan.nextInt()) {
                 case 6:
-                    System.out.println(common.showInfo());
-                    System.out.println(admin.showInfo());
+                    System.out.println(usuarios.get(0).showInfo());
+                    System.out.println(usuarios.get(1).showInfo());
                     break;
                 case 5:
-                    System.out.println(admin.showPermissions());
-                    System.out.println(((Admin)user).showPermissions());
+                    for (User item : usuarios) {
+                        if(item instanceof Admin) {
+                            var admin = (Admin)item;
+                            System.out.println(admin.showPermissions());
+                        }
+                    }
                     break;
                 case 4:
                     scan.nextLine();
                     var permiso = scan.nextLine();
-                    var permisos = new String[]{"x","y","z"};
-                    //common.setPermissions();
-                    admin.setPermissions(permiso);
-                    ((Admin)user).setPermissions(permisos);
-                    //((Admin)common).setPermissions(permisos); X
-                    break; 
+                    var permisos = new String[] { "x", "y", "z" };
+                    // common.setPermissions();
+                    ((Admin)usuarios.get(1)).setPermissions(permiso);
+                    ((Admin) usuarios.get(2)).setPermissions(permisos);
+                    // ((Admin)common).setPermissions(permisos); X
+                    break;
                 case 1:
                     scan.nextLine();
                     var tempName = scan.nextLine();
-                    common.setUsername(tempName);
-                    admin.setUsername(tempName);
-                    user.setUsername(tempName);
+                    usuarios.get(0).setUsername(tempName);
+                    usuarios.get(1).setUsername(tempName);
+                    usuarios.get(2).setUsername(tempName);
                     break;
                 case 2:
                     scan.nextLine();
                     var tempPassword = scan.nextLine();
-                    common.setPassword(tempPassword);
-                    admin.setPassword(tempPassword);
-                    user.setPassword(tempPassword);
+                    usuarios.get(0).setPassword(tempPassword);
+                    usuarios.get(1).setPassword(tempPassword);
+                    usuarios.get(2).setPassword(tempPassword);
                     break;
                 case 3:
                     scan.nextLine();
                     var tempCheckPassword = scan.nextLine();
-                    System.out.println("User: "+common.checkPassword(tempCheckPassword));
-                    System.out.println("Admin: "+admin.checkPassword(tempCheckPassword));
-                    System.out.println("Admin: "+user.checkPassword(tempCheckPassword));
+                    System.out.println("User: " + usuarios.get(0).checkPassword(tempCheckPassword));
+                    System.out.println("Admin: " + usuarios.get(1).checkPassword(tempCheckPassword));
+                    System.out.println("User-Admin: " + usuarios.get(2).checkPassword(tempCheckPassword));
                     break;
                 case 0:
                     // Salir
@@ -84,7 +90,8 @@ public class Main {
 
                     break;
                 default:
-                    System.out.println("Ingrese una opcion valida......\nPresione Enter para continuar.");
+                    System.out.println("Ingrese una opcion " +
+                            "valida......\nPresione Enter para continuar.");
                     scan.nextLine();
                     break;
             }
