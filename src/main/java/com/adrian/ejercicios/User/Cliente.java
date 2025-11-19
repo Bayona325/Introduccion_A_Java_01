@@ -1,10 +1,10 @@
-package com.adrian.ejercicios.User;
+package com.adrian.ejercicios.user;
 
 public class Cliente extends User {
 
     @Override
     public void setUsername(String username) {
-        this.username =  "CLI-" + username;
+        this.username =  username;
     }
 
     @Override

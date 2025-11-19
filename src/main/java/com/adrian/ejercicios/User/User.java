@@ -1,4 +1,4 @@
-package com.adrian.ejercicios.User;
+package com.adrian.ejercicios.user;
 
 public abstract class User {
     protected String username;
@@ -23,6 +23,10 @@ public abstract class User {
 
     public boolean checkPassword(String password) {
         return this.password.equals(password);
+    }
+
+     public String getUserName() {
+        return username;
     }
 
     public String showInfo() {
